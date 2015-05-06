@@ -1,0 +1,22 @@
+{
+    "name": "jlorente/yii2-command-handler",
+    "description": "A Yii2 extension that provides the framework with the Command Design Pattern. Useful to create commands in a main process and execute them in another processes such as crons, console controllers, etc.",
+    "keywords": ["yii2", "command", "design", "pattern", "handler", "process", "cron", "thread", "execute"],
+    "homepage": "https://github.com/jlorente/yii2-command-handler",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Lorente Martin",
+            "email": "jose.lorente.martin@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "jlorente\\command\\": "src/"
+        }
+    }
+}
