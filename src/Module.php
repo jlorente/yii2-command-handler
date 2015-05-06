@@ -13,6 +13,6 @@ use yii\base\Module as BaseModule;
 
 class Module extends BaseModule {
 
-    public $controllerNamespace = 'jlorente\command';
+    public $controllerNamespace = 'jlorente\command\controllers';
 
 }

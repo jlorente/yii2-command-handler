@@ -7,8 +7,6 @@
  * @version     1.0
  */
 
-namespace jlorente\notification\console\migrations;
-
 use yii\db\Schema;
 use yii\db\Migration;
 

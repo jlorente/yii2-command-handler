@@ -7,7 +7,7 @@
  * @version     1.0
  */
 
-namespace jlorente\notification\console\controllers;
+namespace jlorente\command\controllers;
 
 use yii\console\Controller;
 use jlorente\command\base\CommandProcessor;
