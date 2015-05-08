@@ -11,7 +11,7 @@ namespace jlorente\command\db;
 
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
-use jlorente\command\interfaces\CommandInterface;
+use jlorente\command\base\CommandInterface;
 use yii\helpers\Json;
 use yii\base\Exception as YiiException;
 
