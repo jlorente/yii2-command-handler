@@ -25,7 +25,13 @@ or add
     }
 ```
 
-to the ```require``` section of your `composer.json` file.
+to the ```require``` section of your `composer.json` file and run the following 
+commands from your project directory.
+```bash
+$ composer update
+$ ./yii migrate --migrationPath=@app/vendor/jlorente/yii2-command-handler/src/migrations
+```
+The last command will create the table to handler the command list.
 
 ## Usage
 

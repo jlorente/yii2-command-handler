@@ -44,7 +44,7 @@ class CommandProcessor extends Model {
 
     /**
      *
-     * @var CommandMapper[] 
+     * @var SplDoublyLinkedList 
      */
     protected $erroneousMapper;
 
@@ -105,10 +105,10 @@ class CommandProcessor extends Model {
             throw new InvalidParamException('n must be a numeric value');
         }
         $i = 0;
-        while (($n !== null && $n < $i++) && ($mapper = CommandMapper::find()->orderBy($this->getOrder())->one())) {
+        while (($n === null || $n < $i++) && ($mapper = CommandMapper::find()->orderBy($this->getOrder())->one())) {
             $this->processMapper($mapper);
         }
-        if ($this->hasErroneousMappers($restoreErroneousMappers)) {
+        if ($this->hasErroneousMappers()) {
             if ($restoreErroneousMappers) {
                 $this->restoreErroneousMappers();
             }
@@ -152,6 +152,7 @@ class CommandProcessor extends Model {
      * Restores the erroneous mappers into the database.
      */
     protected function restoreErroneousMappers() {
+        $this->erroneousMapper->rewind();
         while ($this->erroneousMappers->valid()) {
             $this->erroneousMappers->current()->save();
             $this->erroneousMappers->next();

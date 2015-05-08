@@ -51,7 +51,6 @@ class CommandMapper extends ActiveRecord {
      */
     public function attributeLabels() {
         return [
-            'id' => 'ID',
             'command' => 'Command',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -65,6 +64,22 @@ class CommandMapper extends ActiveRecord {
         return array_merge(parent::behaviors(), [
             TimestampBehavior::className(),
         ]);
+    }
+
+    /**
+     * @inheritdoc
+     * 
+     * Creates the primary key on insert.
+     */
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            if ($insert) {
+                $this->id = hash('crc32b', time() . uniqid());
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
