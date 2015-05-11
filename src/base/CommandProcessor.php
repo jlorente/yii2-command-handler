@@ -152,7 +152,7 @@ class CommandProcessor extends Object {
      * Restores the erroneous mappers into the database.
      */
     protected function restoreErroneousMappers() {
-        $this->erroneousMapper->rewind();
+        $this->erroneousMappers->rewind();
         while ($this->erroneousMappers->valid()) {
             $this->erroneousMappers->current()->save();
             $this->erroneousMappers->next();
