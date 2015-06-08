@@ -57,7 +57,7 @@ Here, we can create a command and delegate the process to an another non locking
 
 #### Receiver
 
-First, the Group class has MUST implement \jlorente\command\base\Receiver interface and the method that will send the email to all the group users.
+First, the Group class MUST implement \jlorente\command\base\Receiver interface and the method that will send the email to all the group users.
 
 ```php
 namespace common\models;
@@ -198,6 +198,10 @@ The run method also accept two arguments. The first one is an integer that will 
 ```php
 $processor->run(10, false); //This will limit the commands to 10 and won't restore the erroneous ones.
 ```
+
+## Further considerations
+
+Previously I said that commands for ActiveRecord receivers have to inherit from \jlorente\command\db\Command. That's not true at all and depends of the final behavior that you want to achieve. Commands for ActiveRecord receivers could inherit from \jlorente\command\base\Command too, but the receiver of the command will store the state it had when the command was created and not the one that it has when the command will be executed. Those commands that inherit from \jlorente\command\db\Command will always fetch the ActiveRecord object from the database instead of using a copy of the object with the properties that it had when the command was created.
 
 ## License 
 Copyright &copy; 2015 José Lorente Martín <jose.lorente.martin@gmail.com>.
