@@ -6,8 +6,6 @@ Useful to create commands in a main process and execute them in another processe
 
 ## Installation
 
-Include the package as dependency under the bower.json file.
-
 To install, either run
 
 ```bash
