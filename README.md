@@ -127,7 +127,7 @@ The console controller will process the command list and execute the commands in
 ```bash
 $ ./yii <moduleId>/command-processor/run <int>
 ```
-Where <moduleId> is the name you put in the module configuration of your config file and <int> is an optional argument to limit the number of mappers to be processed in the execution.
+Where ```<moduleId>``` is the name you put in the module configuration of your config file and ```<int>``` is an optional argument to limit the number of mappers to be processed in the execution.
 
 Maybe you want to put the execution of the action in a cronjob or something similar to be run every minute or in the interval that you want.
 
