@@ -1,0 +1,3 @@
+# Ignore documentation for archive
+/.gitattributes     export-ignore
+/docs               export-ignore

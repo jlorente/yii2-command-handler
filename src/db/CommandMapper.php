@@ -33,7 +33,7 @@ class CommandMapper extends ActiveRecord {
      * @inheritdoc
      */
     public static function tableName() {
-        return 'cmd_mapper';
+        return 'jl_cmd_mapper';
     }
 
     /**

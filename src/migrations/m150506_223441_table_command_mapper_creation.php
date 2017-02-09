@@ -6,7 +6,6 @@
  * @copyright   José Lorente
  * @version     1.0
  */
-
 use yii\db\Schema;
 use yii\db\Migration;
 
@@ -26,21 +25,60 @@ class m150506_223441_table_command_mapper_creation extends Migration {
      * @inheritdoc
      */
     public function up() {
-        $this->createTable('cmd_mapper', [
-            'id' => Schema::TYPE_STRING.'(8) NOT NULL',
-            'command' => Schema::TYPE_BINARY,
+        try {
+            $this->upgradePackage();
+        } catch (Exception $ex) {
+            $this->createPackage();
+        }
+        $this->createIndex($this->getIndexName(), $this->getTableName(), 'updated_at');
+    }
+
+    /**
+     * Table name modification. Only for upgrading from previous versions.
+     */
+    protected function upgradePackage() {
+        $this->renameTable('cmd_mapper', $this->getTableName());
+        $this->dropIndex('INDEX_UpdatedAt');
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function createPackage() {
+        $this->createTable($this->getTableName(), [
+            'id' => Schema::TYPE_STRING . '(8) NOT NULL',
+            'command' => Schema::TYPE_BINARY . ' NOT NULL',
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER
         ]);
         $this->addPrimaryKey('PK_CmdMapper_Id', 'cmd_mapper', 'id');
-        $this->createIndex('INDEX_UpdatedAt', 'cmd_mapper', 'updated_at');
     }
 
     /**
      * @inheritdoc
      */
     public function down() {
-        $this->dropTable('cmd_mapper');
+        $this->dropTable($this->getTableName());
+    }
+
+    /**
+     * Returns the table name of the variable model. You can override this 
+     * method in order to provide a custom table name.
+     * 
+     * @return string
+     */
+    protected function getTableName() {
+        return 'jl_cmd_mapper';
+    }
+
+    /**
+     * Returns the index name of the command mapper model. You can override this 
+     * method in order to provide a custom table name.
+     * 
+     * @return string
+     */
+    protected function getIndexName() {
+        return 'INDEX_JlCmdMapper_UpdatedAt';
     }
 
 }
