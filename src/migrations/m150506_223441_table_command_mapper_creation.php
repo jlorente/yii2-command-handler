@@ -51,7 +51,7 @@ class m150506_223441_table_command_mapper_creation extends Migration {
             'created_at' => Schema::TYPE_INTEGER,
             'updated_at' => Schema::TYPE_INTEGER
         ]);
-        $this->addPrimaryKey('PK_CmdMapper_Id', 'cmd_mapper', 'id');
+        $this->addPrimaryKey('PK_JlCmdMapper_Id', $this->getTableName(), 'id');
     }
 
     /**
