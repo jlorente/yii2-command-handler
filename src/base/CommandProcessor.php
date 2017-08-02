@@ -105,7 +105,7 @@ class CommandProcessor extends Object {
             throw new InvalidParamException('n must be a numeric value');
         }
         $i = 0;
-        while (($n === null || $n < $i++) && ($mapper = CommandMapper::find()->orderBy($this->getOrder())->one())) {
+        while (($n === null || $i++ < $n) && ($mapper = CommandMapper::find()->orderBy($this->getOrder())->one())) {
             $this->processMapper($mapper);
         }
         if ($this->hasErroneousMappers()) {
