@@ -95,7 +95,7 @@ class CommandMapper extends ActiveRecord {
      * @return CommandInterface
      */
     public function getCommand() {
-        return unserialize($this->command);
+        return unserialize(is_resource($this->command) ? stream_get_contents($this->command) : $this->command);
     }
 
     /**
