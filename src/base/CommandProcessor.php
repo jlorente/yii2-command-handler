@@ -13,7 +13,6 @@ use jlorente\command\db\CommandMapper;
 use yii\base\InvalidParamException;
 use Exception;
 use Yii;
-use yii\base\Object;
 use SplDoublyLinkedList;
 use yii\log\Logger;
 
@@ -24,7 +23,7 @@ use yii\log\Logger;
  *
  * @author José Lorente <jose.lorente.martin@gmail.com>
  */
-class CommandProcessor extends Object {
+class CommandProcessor extends \yii\base\BaseObject {
 
     /**
      * Mode to process the newer commands first.
